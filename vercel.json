@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/manage.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/library_seat_booking/wsgi.py"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "backend/library_seat_booking/wsgi.py"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "library_seat_booking.production_settings"
+  },
+  "functions": {
+    "backend/library_seat_booking/wsgi.py": {
+      "runtime": "python3.9"
+    }
+  }
+}
