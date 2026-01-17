@@ -1,0 +1,162 @@
+WARNING 2026-01-09 19:14:32,522 accounts.views Registration validation failed: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')], 'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-09 19:14:34,717 accounts.views Registration validation failed: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')], 'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+INFO 2026-01-09 19:15:01,128 accounts.views New user registered: gooduser20260109191500 (gooduser20260109191500@library.com)
+INFO 2026-01-09 19:15:14,018 accounts.views User admin logged in successfully
+WARNING 2026-01-09 19:15:14,509 accounts.views Login validation failed: {'non_field_errors': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-09 19:17:10,870 accounts.views Login validation failed: {'non_field_errors': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-09 19:17:53,296 accounts.views Registration validation failed: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')], 'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')], 'student_id': [ErrorDetail(string='User with this student id already exists.', code='unique')]}
+WARNING 2026-01-09 19:19:16,571 accounts.views Registration validation failed: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')], 'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')], 'student_id': [ErrorDetail(string='User with this student id already exists.', code='unique')]}
+WARNING 2026-01-09 19:25:06,102 accounts.views Registration validation failed: {'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')], 'student_id': [ErrorDetail(string='User with this student id already exists.', code='unique')]}
+INFO 2026-01-09 19:27:36,796 accounts.views New user registered: testuser20260109192736 (testuser20260109192736@library.com)
+INFO 2026-01-09 19:27:37,451 accounts.views New user registered: minimal20260109192736 (minimal20260109192736@library.com)
+INFO 2026-01-09 19:27:37,918 accounts.views New user registered: extra20260109192736 (extra20260109192736@library.com)
+WARNING 2026-01-09 19:27:37,933 accounts.views Registration validation failed: {'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-09 19:27:37,999 accounts.views Registration validation failed: {'username': [ErrorDetail(string='This field may not be blank.', code='blank')], 'email': [ErrorDetail(string='This field may not be blank.', code='blank')], 'password': [ErrorDetail(string='Password cannot be blank', code='blank')], 'password_confirm': [ErrorDetail(string='Password confirmation cannot be blank', code='blank')]}
+INFO 2026-01-09 19:27:42,729 accounts.views New user registered: testuser20260109192742 (testuser20260109192742@library.com)
+INFO 2026-01-09 19:27:43,252 accounts.views New user registered: minimal20260109192742 (minimal20260109192742@library.com)
+INFO 2026-01-09 19:27:43,805 accounts.views New user registered: extra20260109192742 (extra20260109192742@library.com)
+WARNING 2026-01-09 19:27:43,821 accounts.views Registration validation failed: {'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-09 19:27:43,846 accounts.views Registration validation failed: {'username': [ErrorDetail(string='This field may not be blank.', code='blank')], 'email': [ErrorDetail(string='This field may not be blank.', code='blank')], 'password': [ErrorDetail(string='Password cannot be blank', code='blank')], 'password_confirm': [ErrorDetail(string='Password confirmation cannot be blank', code='blank')]}
+INFO 2026-01-09 19:49:06,739 accounts.views New user registered: testuser_1533913508 (testuser_497480984@example.com)
+WARNING 2026-01-09 19:49:06,827 accounts.views Login validation failed: {'email_or_phone': [ErrorDetail(string='This field may not be null.', code='null')]}
+WARNING 2026-01-09 19:50:14,552 accounts.views Registration validation failed: {'student_id': [ErrorDetail(string='User with this student id already exists.', code='unique')]}
+INFO 2026-01-09 19:50:35,251 accounts.views New user registered: testuser_1560923650 (testuser_1560923650@example.com)
+WARNING 2026-01-09 19:50:35,290 accounts.views Login validation failed: {'email_or_phone': [ErrorDetail(string='This field may not be null.', code='null')]}
+INFO 2026-01-09 19:50:59,861 accounts.views New user registered: testuser_1296976798 (testuser_1296976798@example.com)
+WARNING 2026-01-09 19:50:59,905 accounts.views Login validation failed: {'email_or_phone': [ErrorDetail(string='This field may not be null.', code='null')]}
+INFO 2026-01-09 19:54:02,234 accounts.views New user registered: testuser_1218062058 (testuser_1218062058@example.com)
+WARNING 2026-01-09 19:54:02,260 accounts.views Login validation failed: {'email_or_phone': [ErrorDetail(string='This field may not be null.', code='null')]}
+INFO 2026-01-09 19:55:36,594 accounts.views New user registered: testuser_1360404910 (testuser_1360404910@example.com)
+INFO 2026-01-09 19:55:37,124 accounts.views User testuser_1360404910 logged in successfully
+WARNING 2026-01-09 20:02:21,392 accounts.views Registration validation failed: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')], 'student_id': [ErrorDetail(string='User with this student id already exists.', code='unique')]}
+INFO 2026-01-09 20:04:25,681 accounts.views New user registered: abhi (INFO@cumail.in)
+ERROR 2026-01-10 13:01:01,347 accounts.views Error creating user: UNIQUE constraint failed: users.email
+INFO 2026-01-10 13:04:47,370 accounts.views New user registered: 6202455773 (ab8603583@gmail.com)
+WARNING 2026-01-10 17:11:13,340 accounts.views Registration validation failed: {'student_id': [ErrorDetail(string='User with this student id already exists.', code='unique')]}
+INFO 2026-01-10 17:44:54,709 accounts.views New user registered: abhi09 (ak8603583@gmail.com)
+INFO 2026-01-10 17:45:58,669 accounts.views User abhi09 logged in successfully
+INFO 2026-01-10 17:53:41,303 accounts.views User abhi09 logged in successfully
+INFO 2026-01-10 17:55:38,931 accounts.views User abhi09 logged in successfully
+INFO 2026-01-10 19:45:59,250 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 10:21:43,101 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 10:39:54,125 accounts.views New user registered: sonu123 (sonu@gmail.com)
+INFO 2026-01-11 14:03:31,825 accounts.views New user registered: abhishek (INFOIDEA@cumail.in)
+WARNING 2026-01-11 14:21:50,456 accounts.views Registration validation failed: {'phone': [ErrorDetail(string='Phone number already registered', code='invalid')]}
+WARNING 2026-01-11 14:25:41,643 accounts.views Registration validation failed: {'phone': [ErrorDetail(string='Phone number already registered', code='invalid')]}
+INFO 2026-01-11 14:28:41,264 accounts.views New user registered: prince (prince@gmail.com)
+INFO 2026-01-11 14:31:14,881 accounts.views User prince logged in successfully
+INFO 2026-01-11 15:13:52,859 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 15:26:19,884 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 16:04:24,651 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 16:06:34,434 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-11 16:47:58,185 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-11 16:48:12,796 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-11 16:48:25,015 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-11 16:49:07,150 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 17:21:28,164 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 17:43:34,424 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 18:23:13,470 accounts.views User abhi09 logged in successfully
+INFO 2026-01-11 22:49:37,667 accounts.views User abhi09 logged in successfully
+INFO 2026-01-12 19:15:24,559 accounts.views User abhi09 logged in successfully
+INFO 2026-01-12 19:16:55,660 accounts.views New user registered: shyamsh (shyam123@gmail.com)
+INFO 2026-01-12 19:20:29,782 accounts.views New user registered: mohans (mohan123@gmail.com)
+INFO 2026-01-12 19:20:52,620 accounts.views User mohans logged in successfully
+INFO 2026-01-12 19:30:26,392 accounts.views User abhi09 logged in successfully
+INFO 2026-01-12 20:03:35,911 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-12 20:17:13,900 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-13 13:05:14,704 accounts.views User abhi09 logged in successfully
+INFO 2026-01-13 14:08:57,020 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-13 21:55:40,015 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-13 21:59:02,074 accounts.views User abhi09 logged in successfully
+INFO 2026-01-13 22:19:46,639 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-13 23:18:16,161 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-13 23:21:37,177 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-13 23:21:55,161 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-13 23:31:47,064 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-13 23:31:55,247 accounts.views User superuser_abhi logged in successfully
+INFO 2026-01-13 23:48:02,016 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-13 23:50:55,474 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-13 23:51:08,305 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-13 23:51:19,075 accounts.views User superuser_abhi logged in successfully
+INFO 2026-01-14 10:29:09,172 accounts.views User abhi09 logged in successfully
+INFO 2026-01-14 10:41:49,067 accounts.views User superuser_abhi logged in successfully
+INFO 2026-01-14 10:43:49,331 accounts.views User abhi09 logged in successfully
+INFO 2026-01-14 11:48:18,410 accounts.views User abhi09 logged in successfully
+INFO 2026-01-14 12:58:20,656 accounts.views User abhi09 logged in successfully
+INFO 2026-01-14 14:01:03,364 accounts.views User abhi09 logged in successfully
+INFO 2026-01-14 16:48:58,133 accounts.views User abhi09 logged in successfully
+INFO 2026-01-14 18:42:53,861 accounts.views User abhi09 logged in successfully
+INFO 2026-01-15 07:52:30,923 accounts.views User abhi09 logged in successfully
+INFO 2026-01-15 09:57:14,821 accounts.views User abhi09 logged in successfully
+INFO 2026-01-15 18:44:00,868 accounts.views User abhi09 logged in successfully
+INFO 2026-01-15 18:54:10,789 accounts.views User abhi09 logged in successfully
+INFO 2026-01-15 19:33:18,189 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-16 14:22:59,498 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-16 14:23:29,653 accounts.views User abhi09 logged in successfully
+INFO 2026-01-16 15:43:54,680 accounts.views User abhi09 logged in successfully
+INFO 2026-01-16 19:26:29,167 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-17 08:53:58,286 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-17 08:54:24,338 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-17 08:55:39,277 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 08:56:22,406 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 08:56:46,088 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 08:58:20,687 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 08:58:50,590 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-17 09:05:10,190 accounts.views User superadmin logged in successfully
+WARNING 2026-01-17 09:39:32,752 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:39:39,286 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-17 09:39:47,259 accounts.views User abhi09 logged in successfully
+WARNING 2026-01-17 09:44:18,414 accounts.views Login validation failed: {'email_or_phone': [ErrorDetail(string='Email or phone number is required', code='required')]}
+WARNING 2026-01-17 09:44:20,634 accounts.views Registration validation failed: {'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-17 09:46:07,686 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:46:09,735 accounts.views Registration validation failed: {'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-17 09:46:27,668 accounts.views Registration validation failed: {'email': [ErrorDetail(string='This field is required.', code='required')], 'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-17 09:46:30,784 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:46:34,049 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:46:51,635 accounts.views Registration validation failed: {'email': [ErrorDetail(string='This field is required.', code='required')], 'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-17 09:46:54,778 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:48:24,490 accounts.views Registration validation failed: {'email': [ErrorDetail(string='User with this email already exists.', code='unique')], 'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-17 09:48:27,694 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:48:29,746 accounts.views Registration validation failed: {'password_confirm': [ErrorDetail(string='Password confirmation is required', code='required')]}
+WARNING 2026-01-17 09:48:33,036 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:49:02,459 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:49:05,704 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:49:08,973 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 09:51:02,569 accounts.views Login attempt with empty request body
+WARNING 2026-01-17 09:51:04,627 accounts.views Registration attempt with empty request body
+INFO 2026-01-17 10:02:28,975 accounts.views User superadmin logged in successfully
+WARNING 2026-01-17 10:09:45,473 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 10:10:50,180 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 10:11:16,531 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 10:11:57,185 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 10:12:40,475 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-01-17 10:13:45,454 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-17 10:15:46,370 accounts.views User admin logged in successfully
+INFO 2026-01-17 10:16:56,551 accounts.views User admin logged in successfully
+INFO 2026-01-17 10:17:25,968 accounts.views User admin logged in successfully
+INFO 2026-01-17 10:17:30,960 accounts.views User testapi logged in successfully
+INFO 2026-01-17 10:18:00,560 accounts.views User admin logged in successfully
+INFO 2026-01-17 10:18:35,191 accounts.views User admin logged in successfully
+INFO 2026-01-17 10:19:19,025 accounts.views User admin logged in successfully
+INFO 2026-01-17 10:19:26,162 accounts.views User testapi logged in successfully
+INFO 2026-01-17 10:20:38,896 accounts.views User admin logged in successfully
+INFO 2026-01-17 10:20:45,919 accounts.views User testapi logged in successfully
+INFO 2026-01-17 10:22:29,801 accounts.views User admin logged in successfully
+INFO 2026-01-17 10:22:36,825 accounts.views User testapi logged in successfully
+INFO 2026-01-17 14:42:35,391 accounts.views User admin logged in successfully
+INFO 2026-01-17 14:42:42,533 accounts.views User testapi logged in successfully
+INFO 2026-01-17 14:46:05,724 accounts.views User admin logged in successfully
+INFO 2026-01-17 14:46:12,715 accounts.views User testapi logged in successfully
+INFO 2026-01-17 14:47:49,513 accounts.views User admin logged in successfully
+INFO 2026-01-17 14:47:56,525 accounts.views User testapi logged in successfully
+INFO 2026-01-17 14:50:31,305 accounts.views User superadmin logged in successfully
+WARNING 2026-01-17 14:54:41,002 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-01-17 14:54:48,522 accounts.views User abhi09 logged in successfully
+INFO 2026-01-17 15:03:54,781 accounts.views User testapi logged in successfully
+INFO 2026-01-17 15:04:19,419 accounts.views User testapi logged in successfully
+INFO 2026-01-17 15:05:10,198 accounts.views User testapi logged in successfully
+INFO 2026-01-17 15:06:08,178 accounts.views User testapi logged in successfully
+INFO 2026-01-17 15:06:44,847 accounts.views User testapi logged in successfully
+INFO 2026-01-17 15:19:16,869 accounts.views User testapi logged in successfully
+INFO 2026-01-17 15:22:26,319 accounts.views User testapi logged in successfully
+INFO 2026-01-17 15:22:54,944 accounts.views User testapi logged in successfully
