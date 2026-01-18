@@ -26,10 +26,5 @@
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "library_seat_booking.production_settings"
-  },
-  "functions": {
-    "backend/library_seat_booking/wsgi.py": {
-      "runtime": "python3.9"
-    }
   }
 }
