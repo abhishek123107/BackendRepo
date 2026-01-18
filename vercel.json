@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.py": {
-      "runtime": "@vercel/python@3.9.0"
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
@@ -13,17 +14,6 @@
     {
       "src": "/admin/(.*)",
       "dest": "api/index.py"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/media/(.*)",
-      "dest": "/media/$1"
     }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "library_seat_booking.production_settings"
-  }
+  ]
 }
