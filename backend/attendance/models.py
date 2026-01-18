@@ -28,7 +28,8 @@ class AttendanceSession(models.Model):
     check_in_deadline = models.DateTimeField(blank=True, null=True)  # Optional deadline for check-in
 
     # Location (optional - can be linked to room)
-    room = models.ForeignKey('seats.Room', on_delete=models.SET_NULL, blank=True, null=True, related_name='sessions')
+    # Note: Room model not implemented yet, commenting out for now
+    # room = models.ForeignKey('seats.Room', on_delete=models.SET_NULL, blank=True, null=True, related_name='sessions')
 
     # Session details
     instructor = models.CharField(max_length=100, blank=True, null=True)

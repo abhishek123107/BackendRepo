@@ -1,0 +1,50 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block object-tools-items %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <!-- Dashboard Statistics -->
+    <div class="dashboard-stats" style="margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h3 style="margin-bottom: 15px; color: #333;">📊 Student Dashboard Statistics</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #007bff;">
+                <h4 style="margin: 0 0 10px 0; color: #007bff;">👥 Total Users</h4>
+                <p style="margin: 0; font-size: 24px; font-weight: bold;">{{ dashboard_stats.total_users }}</p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #28a745;">
+                <h4 style="margin: 0 0 10px 0; color: #28a745;">✅ Active Users</h4>
+                <p style="margin: 0; font-size: 24px; font-weight: bold;">{{ dashboard_stats.active_users }}</p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #17a2b8;">
+                <h4 style="margin: 0 0 10px 0; color: #17a2b8;">🎓 Students</h4>
+                <p style="margin: 0; font-size: 24px; font-weight: bold;">{{ dashboard_stats.student_users }}</p>
+            </div>
+            <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #ffc107;">
+                <h4 style="margin: 0 0 10px 0; color: #ffc107;">⭐ Premium Members</h4>
+                <p style="margin: 0; font-size: 24px; font-weight: bold;">{{ dashboard_stats.premium_members }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Original content -->
+    {{ block.super }}
+{% endblock %}
+
+<style>
+.dashboard-stats h3 {
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.dashboard-stats div {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.dashboard-stats div:hover {
+    transform: translateY(-2px);
+}
+</style>

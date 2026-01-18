@@ -1,11 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from django.conf import settings
 
 class Seat(models.Model):
     STATUS_CHOICES = [
         ('available', 'Available'),
-        ('booked', 'Booked'),
         ('maintenance', 'Under Maintenance'),
     ]
 
@@ -56,7 +54,7 @@ class SeatBooking(models.Model):
     ]
 
     user = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='seat_bookings',
         help_text="User who made the booking",

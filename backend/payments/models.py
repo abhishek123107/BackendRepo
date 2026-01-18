@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class PaymentRecord(models.Model):
@@ -15,7 +15,7 @@ class PaymentRecord(models.Model):
     ]
 
     user = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='payment_records',
         help_text="User who made the payment"

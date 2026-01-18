@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from attendance.views import AttendanceRecordViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,6 +13,8 @@ urlpatterns = [
     path('api/accounts/', include('accounts.urls')),
     path('api/auth/', include('accounts.urls')),
     path('api/payments/', include('payments.urls')),
+    path('api/attendance/', include('attendance.urls')),
+    path('api/records/', AttendanceRecordViewSet.as_view({'get': 'list', 'post': 'create'}), name='records'),
 ]
 
 # Serve media files during development

@@ -53,7 +53,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         write_only=True,
         min_length=8,
         required=True,
-        allow_blank=False,
         error_messages={
             'required': 'Password is required',
             'blank': 'Password cannot be blank',
@@ -63,7 +62,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     password_confirm = serializers.CharField(
         write_only=True,
         required=True,
-        allow_blank=False,
         error_messages={
             'required': 'Password confirmation is required',
             'blank': 'Password confirmation cannot be blank'
@@ -77,8 +75,14 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             'first_name', 'last_name', 'student_id', 'department', 'year_of_study'
         ]
         extra_kwargs = {
-            'username': {'required': True, 'allow_blank': False},
-            'email': {'required': True, 'allow_blank': False},
+            'username': {'required': True},
+            'email': {'required': True},
+            'phone': {'required': False},
+            'first_name': {'required': False},
+            'last_name': {'required': False},
+            'student_id': {'required': False},
+            'department': {'required': False},
+            'year_of_study': {'required': False},
         }
 
     def validate_username(self, value):
@@ -126,17 +130,22 @@ class LoginSerializer(serializers.Serializer):
     """Serializer for user login - validates credentials"""
 
     email_or_phone = serializers.CharField(
-        required=True,
-        allow_blank=False,
+        required=False,
         error_messages={
             'required': 'Email or phone number is required',
             'blank': 'Email or phone number cannot be blank'
         }
     )
+    email = serializers.CharField(
+        required=False,
+        error_messages={
+            'required': 'Email is required',
+            'blank': 'Email cannot be blank'
+        }
+    )
     password = serializers.CharField(
         required=True,
         write_only=True,
-        allow_blank=False,
         error_messages={
             'required': 'Password is required',
             'blank': 'Password cannot be blank'
@@ -157,7 +166,8 @@ class LoginSerializer(serializers.Serializer):
 
     def validate(self, data):
         """Authenticate user with email/phone and password"""
-        email_or_phone = data.get('email_or_phone')
+        # Support both email_or_phone and email field names for compatibility
+        email_or_phone = data.get('email_or_phone') or data.get('email')
         password = data.get('password')
 
         if not email_or_phone or not password:

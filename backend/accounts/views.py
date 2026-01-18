@@ -45,6 +45,10 @@ class UserViewSet(viewsets.ModelViewSet):
             logger.warning('Login attempt with empty request body')
             return Response({'detail': 'Request body is empty or not valid JSON'}, status=status.HTTP_400_BAD_REQUEST)
 
+        # Debug logging to see what data is received
+        logger.info(f'Login request data keys: {list(request.data.keys())}')
+        logger.info(f'Login request data: {request.data}')
+
         serializer = LoginSerializer(data=request.data)
         if not serializer.is_valid():
             logger.warning(f'Login validation failed: {serializer.errors}')
@@ -107,6 +111,20 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=False, methods=['get'])
+    def users(self, request):
+        """Get all users (for admin panel)"""
+        # Only allow staff users to access this endpoint
+        if not request.user.is_staff:
+            return Response(
+                {'detail': 'Admin access required'},
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
 
 
 @api_view(['POST'])
