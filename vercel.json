@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "functions": {
+    "api/__init__.py": {
+      "runtime": "@vercel/python@0.5.4"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api/__init__.py"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "api/__init__.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "api/__init__.py"
+    }
+  ]
+}
