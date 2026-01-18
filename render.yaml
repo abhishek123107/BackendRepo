@@ -1,3 +1,4 @@
 web: gunicorn backend.library_seat_booking.wsgi:application
 release: python backend/manage.py migrate
+build: pip install -r backend/requirements.txt && python backend/manage.py collectstatic --noinput
 python_version: "3.9.12"
