@@ -1,18 +1,18 @@
 {
   "version": 2,
   "functions": {
-    "backend/library_seat_booking/wsgi.py": {
+    "api/index.py": {
       "runtime": "@vercel/python@3.9.0"
     }
   },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/library_seat_booking/wsgi.py"
+      "dest": "api/index.py"
     },
     {
       "src": "/admin/(.*)",
-      "dest": "backend/library_seat_booking/wsgi.py"
+      "dest": "api/index.py"
     },
     {
       "src": "/static/(.*)",
