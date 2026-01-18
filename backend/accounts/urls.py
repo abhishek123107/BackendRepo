@@ -1,19 +1,10 @@
-from django.urls import path, include
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from django.urls import path
 from . import views
 
+# Only custom endpoints, ViewSets are handled by main router
 urlpatterns = [
-    # API root endpoint
-    path('', views.APIRootView.as_view(), name='api_root'),
-    
-    # JWT token endpoints
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    
-    # Custom auth endpoints
-    path('login/', views.LoginView.as_view(), name='login'),
-    path('register/', views.RegisterView.as_view(), name='register'),
-    path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('login/', views.UserViewSet.as_view({'post': 'login'}), name='login'),
+    path('register/', views.UserViewSet.as_view({'post': 'register'}), name='register'),
+    path('profile/', views.UserViewSet.as_view({'get': 'profile', 'put': 'update_profile', 'patch': 'update_profile'}), name='profile'),
+    path('token/verify/', views.verify_token, name='token-verify'),
 ]

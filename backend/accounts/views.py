@@ -1,106 +1,130 @@
-from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
-from rest_framework import status
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework import viewsets, status
+from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework.parsers import JSONParser, FormParser, MultiPartParser
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
-from .serializers import UserSerializer, RegisterSerializer
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from django.contrib.auth import authenticate
+from django.utils import timezone
+import logging
+from .models import User
+from .serializers import UserSerializer, UserRegistrationSerializer, LoginSerializer
+
+logger = logging.getLogger(__name__)
 
 
-class APIRootView(APIView):
-    """API Root View for Accounts"""
-    permission_classes = [AllowAny]
-    
-    def get(self, request):
-        return Response({
-            'message': 'Library Seat Booking - Accounts API',
-            'version': '1.0.0',
-            'endpoints': {
-                'login': 'login/',
-                'register': 'register/',
-                'profile': 'profile/',
-                'token_refresh': 'token/refresh/'
-            }
-        })
+class UserViewSet(viewsets.ModelViewSet):
+    """ViewSet for user management"""
 
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
-class LoginView(APIView):
-    permission_classes = [AllowAny]
+    def get_permissions(self):
+        if self.action in ['create', 'login', 'register']:
+            return [AllowAny()]
+        return [IsAuthenticated()]
 
-    def post(self, request):
-        email_or_phone = request.data.get('email_or_phone')
-        password = request.data.get('password')
+    def get_serializer_class(self):
+        if self.action == 'create' or self.action == 'register':
+            return UserRegistrationSerializer
+        if self.action == 'login':
+            return LoginSerializer
+        return UserSerializer
 
-        if not email_or_phone or not password:
+    def get_queryset(self):
+        if self.request.user.is_staff:
+            return User.objects.all()
+        return User.objects.filter(id=self.request.user.id)
+
+    @action(detail=False, methods=['post'], parser_classes=[JSONParser, FormParser, MultiPartParser])
+    def login(self, request):
+        """User login with email/phone and password"""
+        # Check if request body is present
+        if not request.data:
+            logger.warning('Login attempt with empty request body')
+            return Response({'detail': 'Request body is empty or not valid JSON'}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = LoginSerializer(data=request.data)
+        if not serializer.is_valid():
+            logger.warning(f'Login validation failed: {serializer.errors}')
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        user = serializer.validated_data.get('user')
+        if not user:
+            logger.warning('Login successful validation but no user in data')
             return Response(
-                {'error': 'Email/Phone and password are required'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        # Try to authenticate with email first, then username
-        user = None
-        if '@' in email_or_phone:
-            # Email login
-            try:
-                user_obj = User.objects.get(email=email_or_phone)
-                user = authenticate(username=user_obj.username, password=password)
-            except User.DoesNotExist:
-                pass
-        else:
-            # Username login
-            user = authenticate(username=email_or_phone, password=password)
-
-        if user is None:
-            return Response(
-                {'error': 'Invalid credentials'},
+                {'detail': 'Invalid credentials'},
                 status=status.HTTP_401_UNAUTHORIZED
             )
-
-        if not user.is_active:
-            return Response(
-                {'error': 'Account is disabled'},
-                status=status.HTTP_401_UNAUTHORIZED
-            )
-
-        # Generate tokens
+        
+        logger.info(f'User {user.username} logged in successfully')
         refresh = RefreshToken.for_user(user)
-        access_token = str(refresh.access_token)
-        refresh_token = str(refresh)
-
         return Response({
-            'access': access_token,
-            'refresh': refresh_token,
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
             'user': UserSerializer(user).data
-        })
+        }, status=status.HTTP_200_OK)
 
+    @action(detail=False, methods=['post'], parser_classes=[JSONParser, FormParser, MultiPartParser])
+    def register(self, request):
+        """User registration"""
+        if not request.data:
+            logger.warning('Registration attempt with empty request body')
+            return Response({'detail': 'Request body is empty or not valid JSON'}, status=status.HTTP_400_BAD_REQUEST)
 
-class RegisterView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        serializer = RegisterSerializer(data=request.data)
+        serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
-            user = serializer.save()
-            refresh = RefreshToken.for_user(user)
-            return Response({
-                'access': str(refresh.access_token),
-                'refresh': str(refresh),
-                'user': UserSerializer(user).data
-            }, status=status.HTTP_201_CREATED)
+            try:
+                user = serializer.save()
+                logger.info(f'New user registered: {user.username} ({user.email})')
+                refresh = RefreshToken.for_user(user)
+                return Response({
+                    'refresh': str(refresh),
+                    'access': str(refresh.access_token),
+                    'user': UserSerializer(user).data
+                }, status=status.HTTP_201_CREATED)
+            except Exception as e:
+                logger.error(f'Error creating user: {str(e)}')
+                return Response(
+                    {'detail': f'Error creating user: {str(e)}'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+        logger.warning(f'Registration validation failed: {serializer.errors}')
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-class ProfileView(APIView):
-    permission_classes = [IsAuthenticated]
-
-    def get(self, request):
+    @action(detail=False, methods=['get'])
+    def profile(self, request):
+        """Get current user profile"""
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
-    def put(self, request):
+    @action(detail=False, methods=['put', 'patch'])
+    def update_profile(self, request):
+        """Update current user profile"""
         serializer = UserSerializer(request.user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def verify_token(request):
+    """Verify JWT token"""
+    token = request.data.get('token')
+    
+    if not token:
+        return Response(
+            {'valid': False, 'detail': 'Token is required'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    
+    try:
+        from rest_framework_simplejwt.tokens import AccessToken
+        AccessToken(token)
+        return Response({'valid': True})
+    except (InvalidToken, TokenError) as e:
+        return Response({'valid': False, 'detail': str(e)})
+

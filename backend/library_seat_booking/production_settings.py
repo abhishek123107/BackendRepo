@@ -17,7 +17,7 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-in-produc
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Allowed hosts for production
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*.vercel.app,localhost,127.0.0.1', cast=Csv())
 
 # Application definition
 INSTALLED_APPS = [
@@ -123,7 +123,7 @@ MEDIA_ROOT = config('MEDIA_ROOT', default='/tmp/media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS Settings for Production
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='https://localhost:3000', cast=Csv())
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='https://your-frontend-url.vercel.app,https://localhost:3000,http://localhost:3000', cast=Csv())
 CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=False, cast=bool)
 CORS_ALLOW_CREDENTIALS = True
 
