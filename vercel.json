@@ -2,7 +2,7 @@
   "version": 2,
   "functions": {
     "backend/library_seat_booking/wsgi.py": {
-      "runtime": "python3.9"
+      "runtime": "@vercel/python"
     }
   },
   "routes": [
