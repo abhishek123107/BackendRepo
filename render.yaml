@@ -1,0 +1,3 @@
+web: gunicorn backend.library_seat_booking.wsgi:application
+release: python backend/manage.py migrate
+python_version: "3.9.12"
