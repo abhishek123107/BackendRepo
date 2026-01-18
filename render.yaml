@@ -1,4 +1,4 @@
-web: gunicorn backend.library_seat_booking.wsgi:application
+web: cd backend && gunicorn library_seat_booking.wsgi:application
 release: cd backend && python manage.py migrate
 build: pip install -r backend/requirements.txt && cd backend && python manage.py collectstatic --noinput
 python_version: "3.11"
