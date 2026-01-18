@@ -39,6 +39,7 @@ class AttendanceSession(models.Model):
     # QR Code for attendance
     qr_code_data = models.TextField(blank=True, null=True)  # Base64 encoded QR code image
     qr_code_token = models.CharField(max_length=100, unique=True, blank=True)
+    qr_token = models.CharField(max_length=100, unique=True, blank=True)  # For QR code generation
 
     # Status
     is_active = models.BooleanField(default=True)

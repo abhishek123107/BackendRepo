@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/auth/', include('accounts.urls')),
     path('api/payments/', include('payments.urls')),
     path('api/attendance/', include('attendance.urls')),
+    path('api/notifications/', include('notifications.urls')),
     path('api/records/', AttendanceRecordViewSet.as_view({'get': 'list', 'post': 'create'}), name='records'),
 ]
 

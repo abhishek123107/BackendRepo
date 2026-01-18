@@ -63,6 +63,12 @@ class PaymentRecordViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['post'])
     def approve(self, request, pk=None):
         """Approve a payment (admin only)"""
+        if not request.user.is_staff and not request.user.is_superuser:
+            return Response(
+                {'detail': 'Admin access required'}, 
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
         payment = self.get_object()
         payment.status = 'paid'
         payment.save()
@@ -71,6 +77,12 @@ class PaymentRecordViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['post'])
     def reject(self, request, pk=None):
         """Reject a payment (admin only)"""
+        if not request.user.is_staff and not request.user.is_superuser:
+            return Response(
+                {'detail': 'Admin access required'}, 
+                status=status.HTTP_403_FORBIDDEN
+            )
+        
         payment = self.get_object()
         payment.status = 'rejected'
         payment.save()

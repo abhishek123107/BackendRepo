@@ -11,5 +11,6 @@ urlpatterns = [
     path('my-attendance/', views.my_attendance, name='my-attendance'),
     path('session-stats/<int:session_id>/', views.session_stats, name='session-stats'),
     path('admin-checkin/<int:session_id>/', views.admin_checkin, name='admin-checkin'),
+    path('generate-qr/', views.generate_qr_code, name='generate-qr'),
     path('report/', views.attendance_report, name='attendance-report'),
 ]

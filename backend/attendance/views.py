@@ -148,44 +148,72 @@ def admin_checkin(request, session_id):
 
     if not user_id:
         return Response(
-            {'error': 'user_id is required'},
+            {'error': 'user_id is required'}, 
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    from accounts.models import User
     try:
+        from accounts.models import User
         user = User.objects.get(id=user_id)
     except User.DoesNotExist:
         return Response(
-            {'error': 'User not found'},
+            {'error': 'User not found'}, 
             status=status.HTTP_404_NOT_FOUND
-        )
-
-    # Check if already checked in
-    existing_record = AttendanceRecord.objects.filter(
-        session=session,
-        user=user
-    ).first()
-
-    if existing_record:
-        return Response(
-            {'error': 'User already checked in'},
-            status=status.HTTP_400_BAD_REQUEST
         )
 
     # Create attendance record
     record = AttendanceRecord.objects.create(
         session=session,
         user=user,
-        check_in_time=timezone.now(),
         method='admin',
-        marked_by=request.user
+        check_in_time=timezone.now()
     )
 
-    serializer = AttendanceRecordSerializer(record)
     return Response({
-        'message': 'Check-in recorded successfully',
-        'record': serializer.data
+        'message': 'Check-in successful',
+        'record_id': record.id,
+        'user': user.username,
+        'check_in_time': record.check_in_time
+    })
+
+
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def generate_qr_code(request):
+    """Generate QR code for attendance session"""
+    import uuid
+    from datetime import datetime
+    
+    # Generate unique token for today's attendance
+    today = datetime.now().strftime('%Y-%m-%d')
+    unique_id = str(uuid.uuid4())
+    qr_token = f"ATTENDANCE_{today}_{unique_id}"
+    
+    # Create or get attendance session for today
+    session, created = AttendanceSession.objects.get_or_create(
+        title=f"Daily Attendance - {today}",
+        qr_token=qr_token,
+        defaults={
+            'created_by': request.user,
+            'is_active': True,
+            'max_participants': 100,
+            'start_time': timezone.now(),
+            'end_time': timezone.now() + timezone.timedelta(hours=12)
+        }
+    )
+    
+    return Response({
+        'qr_token': qr_token,
+        'session_id': session.id,
+        'date': today,
+        'created': created,
+        'qr_data': {
+            'type': 'attendance',
+            'date': today,
+            'token': qr_token,
+            'session_id': session.id,
+            'generated_by': request.user.username
+        }
     })
 
 
