@@ -4,9 +4,9 @@
 pip install -r backend/requirements.txt
 
 # Run Django migrations
-python backend/manage.py migrate
+cd backend && python manage.py migrate
 
 # Collect static files
-python backend/manage.py collectstatic --noinput
+cd backend && python manage.py collectstatic --noinput
 
 echo "Build completed successfully!"
