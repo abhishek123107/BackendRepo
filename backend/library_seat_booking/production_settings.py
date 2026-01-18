@@ -17,7 +17,12 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-in-produc
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Allowed hosts for production
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*.vercel.app,localhost,127.0.0.1', cast=Csv())
+# Priority: DJANGO_ALLOWED_HOSTS env var > ALLOWED_HOSTS env var > default
+django_allowed_hosts = config('DJANGO_ALLOWED_HOSTS', default='')
+if django_allowed_hosts:
+    ALLOWED_HOSTS = django_allowed_hosts.split(',')
+else:
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*.vercel.app,localhost,127.0.0.1', cast=Csv())
 
 # Application definition
 INSTALLED_APPS = [
