@@ -123,7 +123,7 @@ MEDIA_ROOT = config('MEDIA_ROOT', default='/tmp/media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS Settings for Production
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='https://your-frontend-url.vercel.app,https://localhost:3000,http://localhost:3000', cast=Csv())
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='https://backend-repo-two-ruby.vercel.app,https://your-frontend-url.vercel.app,https://localhost:3000,http://localhost:3000', cast=Csv())
 CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=False, cast=bool)
 CORS_ALLOW_CREDENTIALS = True
 
