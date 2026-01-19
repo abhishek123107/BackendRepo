@@ -160,3 +160,5 @@ INFO 2026-01-17 15:06:44,847 accounts.views User testapi logged in successfully
 INFO 2026-01-17 15:19:16,869 accounts.views User testapi logged in successfully
 INFO 2026-01-17 15:22:26,319 accounts.views User testapi logged in successfully
 INFO 2026-01-17 15:22:54,944 accounts.views User testapi logged in successfully
+INFO 2026-01-19 13:14:16,574 accounts.views User welcome logged in successfully
+INFO 2026-01-19 13:20:22,495 accounts.views User welcome logged in successfully

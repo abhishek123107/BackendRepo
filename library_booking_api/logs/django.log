@@ -5574,3 +5574,74 @@ INFO 2026-01-18 18:13:07,287 django.utils.autoreload Watching for file changes w
 INFO 2026-01-18 18:13:15,916 django.server "GET / HTTP/1.1" 200 259
 WARNING 2026-01-18 18:13:16,440 django.request Not Found: /favicon.ico
 WARNING 2026-01-18 18:13:16,442 django.server "GET /favicon.ico HTTP/1.1" 404 4019
+INFO 2026-01-19 12:26:28,284 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 12:27:07,234 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 12:27:34,133 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 12:28:51,046 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 13:14:10,506 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2026-01-19 13:14:16,949 django.server "POST /api/accounts/login/ HTTP/1.1" 200 1020
+INFO 2026-01-19 13:14:20,145 django.server "OPTIONS /api/accounts/student/dashboard/ HTTP/1.1" 200 0
+WARNING 2026-01-19 13:14:20,214 django.request Not Found: /api/accounts/student/dashboard/
+WARNING 2026-01-19 13:14:20,215 django.server "GET /api/accounts/student/dashboard/ HTTP/1.1" 404 18560
+INFO 2026-01-19 13:14:20,230 django.server "OPTIONS /api/accounts/student/profile/ HTTP/1.1" 200 0
+INFO 2026-01-19 13:14:20,234 django.server "OPTIONS /api/accounts/student/stats/ HTTP/1.1" 200 0
+INFO 2026-01-19 13:14:20,239 django.server "OPTIONS /api/accounts/student/activities/?limit=5 HTTP/1.1" 200 0
+WARNING 2026-01-19 13:14:20,257 django.request Not Found: /api/accounts/student/profile/
+WARNING 2026-01-19 13:14:20,277 django.request Not Found: /api/accounts/student/stats/
+WARNING 2026-01-19 13:14:20,277 django.server "GET /api/accounts/student/profile/ HTTP/1.1" 404 18554
+WARNING 2026-01-19 13:14:20,279 django.server "GET /api/accounts/student/stats/ HTTP/1.1" 404 18548
+WARNING 2026-01-19 13:14:20,309 django.request Not Found: /api/accounts/student/activities/
+WARNING 2026-01-19 13:14:20,313 django.server "GET /api/accounts/student/activities/?limit=5 HTTP/1.1" 404 18571
+INFO 2026-01-19 13:20:12,367 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 13:20:21,086 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2026-01-19 13:20:22,535 django.server "POST /api/accounts/login/ HTTP/1.1" 200 1020
+INFO 2026-01-19 13:20:25,556 django.server "OPTIONS /api/accounts/student/dashboard/ HTTP/1.1" 200 0
+WARNING 2026-01-19 13:20:25,603 django.request Not Found: /api/accounts/student/dashboard/
+WARNING 2026-01-19 13:20:25,606 django.server "GET /api/accounts/student/dashboard/ HTTP/1.1" 404 18560
+INFO 2026-01-19 13:20:25,761 django.server "OPTIONS /api/accounts/student/profile/ HTTP/1.1" 200 0
+INFO 2026-01-19 13:20:25,809 django.server "OPTIONS /api/accounts/student/activities/?limit=5 HTTP/1.1" 200 0
+INFO 2026-01-19 13:20:25,809 django.server "OPTIONS /api/accounts/student/stats/ HTTP/1.1" 200 0
+WARNING 2026-01-19 13:20:25,935 django.request Not Found: /api/accounts/student/profile/
+WARNING 2026-01-19 13:20:25,956 django.request Not Found: /api/accounts/student/stats/
+WARNING 2026-01-19 13:20:25,960 django.server "GET /api/accounts/student/profile/ HTTP/1.1" 404 18554
+WARNING 2026-01-19 13:20:25,961 django.server "GET /api/accounts/student/stats/ HTTP/1.1" 404 18548
+WARNING 2026-01-19 13:20:25,997 django.request Not Found: /api/accounts/student/activities/
+WARNING 2026-01-19 13:20:25,999 django.server "GET /api/accounts/student/activities/?limit=5 HTTP/1.1" 404 18571
+WARNING 2026-01-19 13:20:33,565 django.request Not Found: /api/accounts/student/dashboard/
+WARNING 2026-01-19 13:20:33,567 django.server "GET /api/accounts/student/dashboard/ HTTP/1.1" 404 18560
+WARNING 2026-01-19 13:20:33,617 django.request Not Found: /api/accounts/student/dashboard/
+WARNING 2026-01-19 13:20:33,619 django.server "GET /api/accounts/student/dashboard/ HTTP/1.1" 404 18560
+WARNING 2026-01-19 13:20:33,652 django.request Not Found: /api/accounts/student/profile/
+WARNING 2026-01-19 13:20:33,654 django.server "GET /api/accounts/student/profile/ HTTP/1.1" 404 18554
+WARNING 2026-01-19 13:20:33,686 django.request Not Found: /api/accounts/student/stats/
+WARNING 2026-01-19 13:20:33,688 django.server "GET /api/accounts/student/stats/ HTTP/1.1" 404 18548
+WARNING 2026-01-19 13:20:33,720 django.request Not Found: /api/accounts/student/activities/
+WARNING 2026-01-19 13:20:33,723 django.server "GET /api/accounts/student/activities/?limit=5 HTTP/1.1" 404 18571
+WARNING 2026-01-19 13:20:33,751 django.request Not Found: /api/accounts/student/profile/
+WARNING 2026-01-19 13:20:33,754 django.server "GET /api/accounts/student/profile/ HTTP/1.1" 404 18554
+WARNING 2026-01-19 13:20:33,846 django.request Not Found: /api/accounts/student/stats/
+WARNING 2026-01-19 13:20:33,860 django.server "GET /api/accounts/student/stats/ HTTP/1.1" 404 18548
+WARNING 2026-01-19 13:20:33,901 django.request Not Found: /api/accounts/student/activities/
+WARNING 2026-01-19 13:20:33,905 django.server "GET /api/accounts/student/activities/?limit=5 HTTP/1.1" 404 18571
+WARNING 2026-01-19 13:21:51,258 django.request Not Found: /api/accounts/student/dashboard/
+WARNING 2026-01-19 13:21:51,287 django.server "GET /api/accounts/student/dashboard/ HTTP/1.1" 404 18560
+WARNING 2026-01-19 13:21:51,344 django.request Not Found: /api/accounts/student/dashboard/
+WARNING 2026-01-19 13:21:51,364 django.request Not Found: /api/accounts/student/profile/
+WARNING 2026-01-19 13:21:51,366 django.server "GET /api/accounts/student/dashboard/ HTTP/1.1" 404 18560
+WARNING 2026-01-19 13:21:51,373 django.server "GET /api/accounts/student/profile/ HTTP/1.1" 404 18554
+WARNING 2026-01-19 13:21:51,407 django.request Not Found: /api/accounts/student/stats/
+WARNING 2026-01-19 13:21:51,422 django.request Not Found: /api/accounts/student/activities/
+WARNING 2026-01-19 13:21:51,422 django.server "GET /api/accounts/student/stats/ HTTP/1.1" 404 18548
+WARNING 2026-01-19 13:21:51,423 django.server "GET /api/accounts/student/activities/?limit=5 HTTP/1.1" 404 18571
+WARNING 2026-01-19 13:21:51,458 django.request Not Found: /api/accounts/student/stats/
+WARNING 2026-01-19 13:21:51,525 django.request Not Found: /api/accounts/student/profile/
+WARNING 2026-01-19 13:21:51,529 django.server "GET /api/accounts/student/profile/ HTTP/1.1" 404 18554
+WARNING 2026-01-19 13:21:51,529 django.server "GET /api/accounts/student/stats/ HTTP/1.1" 404 18548
+WARNING 2026-01-19 13:21:51,831 django.request Not Found: /api/accounts/student/activities/
+WARNING 2026-01-19 13:21:51,836 django.server "GET /api/accounts/student/activities/?limit=5 HTTP/1.1" 404 18571
+INFO 2026-01-19 13:29:16,805 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 13:35:33,429 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 14:29:53,961 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 21:24:48,447 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-01-19 21:28:51,746 django.utils.autoreload C:\Users\WELCOME\AppData\Roaming\Python\Python313\site-packages\django\shortcuts.py changed, reloading.
+INFO 2026-01-19 21:35:57,888 django.utils.autoreload Watching for file changes with StatReloader

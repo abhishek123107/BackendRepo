@@ -19,7 +19,7 @@ SECRET_KEY = 'django-insecure-your-secret-key-here-change-in-production'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backendrepo-5.onrender.com','localhost:8000','127.0.0.1:8000']
 
 
 # Application definition
@@ -35,11 +35,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'django_filters',
-    'accounts',
-    'seats',
-    'payments',
-    'attendance',
     'notifications',
+    'attendance',
+    'payments',
+    'seats',
+    'accounts',
 ]
 
 MIDDLEWARE = [
