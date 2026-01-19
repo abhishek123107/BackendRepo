@@ -19,7 +19,7 @@ SECRET_KEY = 'django-insecure-your-secret-key-here-change-in-production'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backendrepo-5.onrender.com','localhost:8000','127.0.0.1:8000']
+ALLOWED_HOSTS = ['backendrepo-5.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -51,6 +51,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://backendrepo-5.onrender.com"
 ]
 
 ROOT_URLCONF = 'library_seat_booking.urls'
@@ -138,6 +143,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+DEBUG = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
@@ -161,8 +168,7 @@ AUTH_USER_MODEL = 'accounts.User'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",  # Angular dev server
     "http://127.0.0.1:4200",
-    "http://localhost:4201",  # Alternative port
-    "http://127.0.0.1:4201",
+   
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True  # For development only
