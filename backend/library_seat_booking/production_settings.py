@@ -22,7 +22,9 @@ django_allowed_hosts = config('DJANGO_ALLOWED_HOSTS', default='')
 if django_allowed_hosts:
     ALLOWED_HOSTS = django_allowed_hosts.split(',')
 else:
-    ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*.vercel.app,localhost,127.0.0.1', cast=Csv())
+    default_hosts = ['backendrepo-5.onrender.com', '*.onrender.com', 'localhost', '127.0.0.1']
+    env_hosts = config('ALLOWED_HOSTS', default='', cast=Csv())
+    ALLOWED_HOSTS = list(set(default_hosts + env_hosts)) if env_hosts else default_hosts
 
 # Application definition
 INSTALLED_APPS = [
@@ -115,22 +117,28 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = config('STATIC_URL', default='/static/')
-STATIC_ROOT = config('STATIC_ROOT', default='/tmp/static')
+STATIC_ROOT = config('STATIC_ROOT', default='/var/www/static/')
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
 # Media files (uploads)
 MEDIA_URL = config('MEDIA_URL', default='/media/')
-MEDIA_ROOT = config('MEDIA_ROOT', default='/tmp/media')
+MEDIA_ROOT = config('MEDIA_ROOT', default='/var/www/media/')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Custom User Model
+AUTH_USER_MODEL = 'accounts.User'
+
 # CORS Settings for Production
-CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='https://backend-repo-two-ruby.vercel.app,https://your-frontend-url.vercel.app,https://localhost:3000,http://localhost:3000', cast=Csv())
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', default='https://backendrepo-5.onrender.com,https://*.onrender.com,https://your-frontend-url.onrender.com,https://localhost:3000,http://localhost:3000', cast=Csv())
 CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=False, cast=bool)
 CORS_ALLOW_CREDENTIALS = True
+
+# CSRF Trusted Origins for Production
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='https://backendrepo-5.onrender.com,https://*.onrender.com', cast=Csv())
 
 CORS_ALLOW_HEADERS = [
     'accept',
