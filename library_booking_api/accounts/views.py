@@ -21,7 +21,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     def get_permissions(self):
-        if self.action in ['create', 'login', 'register']:
+        if self.action in ['create', 'login', 'register', 'list']:
             return [AllowAny()]
         return [IsAuthenticated()]
 
@@ -33,6 +33,9 @@ class UserViewSet(viewsets.ModelViewSet):
         return UserSerializer
 
     def get_queryset(self):
+        if self.action == 'list':
+            # For list action, return all users for admin panel
+            return User.objects.all()
         if self.request.user.is_staff:
             return User.objects.all()
         return User.objects.filter(id=self.request.user.id)

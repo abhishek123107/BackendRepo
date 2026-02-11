@@ -15,7 +15,6 @@ from payments.views import MembershipPlanViewSet, PaymentViewSet
 
 # Create a single router to avoid converter conflicts
 router = DefaultRouter()
-router.register(r'users', UserViewSet, basename='user')
 router.register(r'rooms', RoomViewSet)
 router.register(r'seats', SeatViewSet)
 router.register(r'bookings', SeatBookingViewSet)

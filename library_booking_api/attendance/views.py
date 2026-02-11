@@ -1,11 +1,13 @@
 from rest_framework import viewsets, status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from .models import AttendanceSession, AttendanceRecord
 from .serializers import AttendanceSessionSerializer, AttendanceRecordSerializer
+from .scanner import qr_scanner
 
 
 class AttendanceSessionViewSet(viewsets.ModelViewSet):
@@ -14,6 +16,12 @@ class AttendanceSessionViewSet(viewsets.ModelViewSet):
     queryset = AttendanceSession.objects.all()
     serializer_class = AttendanceSessionSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_staff:
+            return AttendanceSession.objects.all()
+        return AttendanceSession.objects.filter(is_active=True)
 
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
@@ -48,48 +56,112 @@ class AttendanceRecordViewSet(viewsets.ModelViewSet):
 def attendance_qr_checkin(request, token):
     """QR code based attendance check-in"""
     try:
-        # Find session by QR token
-        session = get_object_or_404(AttendanceSession, qr_token=token, is_active=True)
-
-        now = timezone.now()
-
-        # Check if session is active
-        if not (session.start_time <= now <= session.end_time):
-            return Response(
-                {'error': 'Session is not currently active'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        # Check if user already checked in
-        existing_record = AttendanceRecord.objects.filter(
-            session=session,
-            user=request.user
-        ).first()
-
-        if existing_record:
-            return Response(
-                {'error': 'Already checked in for this session'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        # Create attendance record
-        record = AttendanceRecord.objects.create(
-            session=session,
+        # Process QR scan using scanner
+        qr_data = f"attendance:{token}"
+        scan_result = qr_scanner.process_attendance_scan(
+            qr_data=qr_data,
             user=request.user,
-            check_in_time=now,
-            method='qr'
+            scan_location=request.data.get('location', 'Unknown'),
+            device_info=request.data.get('device_info', {})
+        )
+        
+        if scan_result['success']:
+            serializer = AttendanceRecordSerializer(scan_result['attendance_record'])
+            return Response({
+                'message': scan_result['message'],
+                'record': serializer.data,
+                'session': scan_result['session'],
+                'check_in_time': scan_result['check_in_time'],
+                'status': scan_result['status']
+            })
+        else:
+            return Response(
+                {'error': scan_result['error']},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            
+    except Exception as e:
+        return Response(
+            {'error': f'Check-in error: {str(e)}'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
-        serializer = AttendanceRecordSerializer(record)
-        return Response({
-            'message': 'Check-in successful',
-            'record': serializer.data
-        })
 
-    except AttendanceSession.DoesNotExist:
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def scan_qr_from_image(request):
+    """Scan QR code from uploaded image"""
+    try:
+        if 'image' not in request.FILES:
+            return Response(
+                {'error': 'No image provided'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        image_file = request.FILES['image']
+        scan_result = qr_scanner.scan_qr_from_image(image_file)
+        
+        if scan_result['success']:
+            return Response({
+                'success': True,
+                'qr_data': scan_result['qr_data'],
+                'confidence': scan_result['confidence'],
+                'position': scan_result['position'],
+                'quality': scan_result['quality']
+            })
+        else:
+            return Response({
+                'success': False,
+                'error': scan_result['error'],
+                'confidence': scan_result['confidence']
+            })
+            
+    except Exception as e:
         return Response(
-            {'error': 'Invalid QR code'},
-            status=status.HTTP_404_NOT_FOUND
+            {'error': f'Scanning error: {str(e)}'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def process_attendance_scan(request):
+    """Process QR code scan for attendance"""
+    try:
+        qr_data = request.data.get('qr_data')
+        if not qr_data:
+            return Response(
+                {'error': 'QR data is required'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        scan_result = qr_scanner.process_attendance_scan(
+            qr_data=qr_data,
+            user=request.user,
+            scan_location=request.data.get('location'),
+            device_info=request.data.get('device_info')
+        )
+        
+        if scan_result['success']:
+            serializer = AttendanceRecordSerializer(scan_result['attendance_record'])
+            return Response({
+                'success': True,
+                'message': scan_result['message'],
+                'record': serializer.data,
+                'session': scan_result['session'],
+                'check_in_time': scan_result['check_in_time'],
+                'status': scan_result['status']
+            })
+        else:
+            return Response({
+                'success': False,
+                'error': scan_result['error']
+            })
+            
+    except Exception as e:
+        return Response(
+            {'error': f'Processing error: {str(e)}'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
 
 

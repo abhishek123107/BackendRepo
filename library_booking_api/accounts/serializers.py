@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
             'id', 'username', 'email', 'phone', 'first_name', 'last_name',
             'full_name', 'student_id', 'membership_type', 'membership_expiry',
             'membership_status', 'days_until_expiry', 'avatar', 'department',
-            'year_of_study', 'total_bookings', 'total_attendance_hours',
+            'year_of_study', 'address', 'document', 'total_bookings', 'total_attendance_hours',
             'consistency_score', 'is_active', 'date_joined', 'is_staff', 'is_superuser'
         ]
         read_only_fields = [
@@ -74,7 +74,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'username', 'email', 'phone', 'password', 'password_confirm',
-            'first_name', 'last_name', 'student_id', 'department', 'year_of_study'
+            'first_name', 'last_name', 'student_id', 'department', 'year_of_study',
+            'address', 'document'
         ]
         extra_kwargs = {
             'username': {'required': True, 'allow_blank': False},

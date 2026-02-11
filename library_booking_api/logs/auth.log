@@ -162,3 +162,35 @@ INFO 2026-01-17 15:22:26,319 accounts.views User testapi logged in successfully
 INFO 2026-01-17 15:22:54,944 accounts.views User testapi logged in successfully
 INFO 2026-01-19 13:14:16,574 accounts.views User welcome logged in successfully
 INFO 2026-01-19 13:20:22,495 accounts.views User welcome logged in successfully
+WARNING 2026-02-09 13:29:51,994 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 13:30:03,118 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 13:30:04,866 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 13:30:05,235 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 13:30:05,473 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 13:30:05,646 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 13:30:06,122 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 13:30:47,860 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 13:32:06,248 accounts.views Registration validation failed: {'username': [ErrorDetail(string='Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.', code='invalid')], 'email': [ErrorDetail(string='User with this email already exists.', code='unique')]}
+WARNING 2026-02-09 13:53:25,613 accounts.views Registration validation failed: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')], 'student_id': [ErrorDetail(string='User with this student id already exists.', code='unique')]}
+WARNING 2026-02-09 19:22:52,535 accounts.views Registration validation failed: {'document': [ErrorDetail(string='The submitted data was not a file. Check the encoding type on the form.', code='invalid')]}
+WARNING 2026-02-09 19:26:21,460 accounts.views Registration validation failed: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')]}
+WARNING 2026-02-09 19:27:42,311 accounts.views Registration validation failed: {'email': [ErrorDetail(string='User with this email already exists.', code='unique')]}
+INFO 2026-02-09 19:28:21,758 accounts.views New user registered: aaaaaa (at860358312@gmail.com)
+WARNING 2026-02-09 19:28:46,489 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 19:29:07,001 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-09 19:29:29,952 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-02-10 13:16:05,831 accounts.views User welcome logged in successfully
+WARNING 2026-02-10 13:24:54,132 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 13:25:06,321 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 13:32:42,405 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 13:32:54,010 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 13:33:57,349 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-02-10 13:34:14,000 accounts.views User welcome logged in successfully
+INFO 2026-02-10 13:56:24,514 accounts.views User welcome logged in successfully
+WARNING 2026-02-10 14:14:20,581 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 14:14:37,840 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 14:15:15,109 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 14:15:36,277 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 14:15:59,844 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+WARNING 2026-02-10 14:16:28,878 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-02-10 14:26:36,490 accounts.views User admin logged in successfully

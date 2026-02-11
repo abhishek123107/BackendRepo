@@ -7,8 +7,11 @@ class MembershipPlanSerializer(serializers.ModelSerializer):
         model = MembershipPlan
         fields = [
             'id', 'name', 'plan_type', 'price', 'duration_days',
-            'description', 'max_bookings_per_day', 'priority_booking',
-            'extended_hours', 'is_active', 'created_at'
+            'description', 'start_time', 'end_time',
+            'max_bookings_per_day', 'priority_booking', 'extended_hours',
+            'includes_personal_charging', 'includes_led_lighting', 'includes_ro_water',
+            'includes_wifi', 'includes_ac', 'includes_comfortable_chairs',
+            'is_active', 'created_at'
         ]
         read_only_fields = ['id', 'created_at']
 

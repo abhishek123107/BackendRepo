@@ -140,13 +140,20 @@ class AttendanceRecord(models.Model):
     check_out_time = models.DateTimeField(blank=True, null=True)
     duration_minutes = models.IntegerField(default=0)  # Time spent in minutes
 
+    # QR Code Scanning
+    scanned_qr_token = models.CharField(max_length=100, blank=True, null=True)
+    scanned_at = models.DateTimeField(blank=True, null=True)
+    scan_location = models.CharField(max_length=200, blank=True, null=True)  # GPS or room location
+    device_info = models.JSONField(default=dict, blank=True)  # Device details when scanning
+
     # Additional info
     notes = models.TextField(blank=True, null=True)
     seat_booking = models.ForeignKey(SeatBooking, on_delete=models.SET_NULL, blank=True, null=True, related_name='attendance')
 
     # Verification
     verified_by_qr = models.BooleanField(default=False)
-    verification_method = models.CharField(max_length=50, blank=True, null=True)  # 'qr_code', 'manual', 'auto'
+    verification_method = models.CharField(max_length=50, blank=True, null=True)  # 'qr_code', 'manual', 'auto', 'scanner'
+    scan_confidence = models.FloatField(default=0.0)  # QR scan confidence score (0-1)
 
     # Timestamps
     created_at = models.DateTimeField(default=timezone.now)
@@ -180,6 +187,32 @@ class AttendanceRecord(models.Model):
             self.status = 'late'
 
         self.save()
+
+    def scan_qr_code(self, qr_token, scan_location=None, device_info=None):
+        """Process QR code scan for attendance"""
+        now = timezone.now()
+        
+        # Validate QR token matches session
+        if qr_token != self.session.qr_code_token:
+            raise ValidationError("Invalid QR code for this session")
+        
+        # Check if session is active
+        if not self.session.is_ongoing:
+            raise ValidationError("Session is not currently active")
+        
+        # Update scan details
+        self.scanned_qr_token = qr_token
+        self.scanned_at = now
+        self.scan_location = scan_location or "Unknown"
+        self.device_info = device_info or {}
+        self.verified_by_qr = True
+        self.verification_method = 'scanner'
+        self.scan_confidence = 1.0  # High confidence for QR scan
+        
+        # Mark as present
+        self.mark_present(now)
+        
+        return True
 
     def check_out(self, check_out_time=None):
         """Record check-out time"""

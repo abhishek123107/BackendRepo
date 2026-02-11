@@ -6,6 +6,12 @@ from django.conf import settings
 class MembershipPlan(models.Model):
     """लाइब्रेरी एक्सेस के लिए सदस्यता योजनाएं"""
     PLAN_TYPE_CHOICES = [
+        ('morning_shift', 'Morning Shift (6 AM - 11 AM)'),
+        ('afternoon_shift', 'Afternoon Shift (11 AM - 4 PM)'),
+        ('evening_shift', 'Evening Shift (4 PM - 9 PM)'),
+        ('full_day', 'Full Day (12 Hours)'),
+        ('night_shift', 'Night Shift (7 PM - 6 AM)'),
+        ('24_7_access', '24/7 Access (Unlimited)'),
         ('1_month', '1 Month'),
         ('3_months', '3 Months'),
         ('6_months', '6 Months'),
@@ -17,11 +23,23 @@ class MembershipPlan(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     duration_days = models.IntegerField()
     description = models.TextField(blank=True, null=True)
+    
+    # Shift timing details
+    start_time = models.TimeField(blank=True, null=True)  # For shift-based plans
+    end_time = models.TimeField(blank=True, null=True)    # For shift-based plans
 
     # विशेषताएं
     max_bookings_per_day = models.IntegerField(default=1)
     priority_booking = models.BooleanField(default=False)
     extended_hours = models.BooleanField(default=False)
+    
+    # Amenities included
+    includes_personal_charging = models.BooleanField(default=True)
+    includes_led_lighting = models.BooleanField(default=True)
+    includes_ro_water = models.BooleanField(default=True)
+    includes_wifi = models.BooleanField(default=True)
+    includes_ac = models.BooleanField(default=True)
+    includes_comfortable_chairs = models.BooleanField(default=True)
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)

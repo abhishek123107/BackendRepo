@@ -27,6 +27,8 @@ class User(AbstractUser):
     avatar = models.URLField(blank=True, null=True)
     department = models.CharField(max_length=100, blank=True, null=True)
     year_of_study = models.IntegerField(blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    document = models.FileField(upload_to='documents/', blank=True, null=True)
 
     # Statistics
     total_bookings = models.IntegerField(default=0)
