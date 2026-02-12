@@ -32,9 +32,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-iv*g$pfm_@j5-gutyl@m8^vna)z60th=-_^uv!odz&&o3az#=r')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'backendrepo-5.onrender.com',
+    '*.onrender.com',
+    '127.0.0.1',
+    'localhost'
+]
 
 
 # Application definition
@@ -161,8 +166,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080",
     "http://localhost:59101",
     "http://127.0.0.1:59101",
-    # Vercel deployment
+    # Production URLs
     "https://front-repo-liard.vercel.app",
+    "https://backendrepo-5.onrender.com",
+    "https://*.onrender.com",
     # Ngrok URLs (for testing)
     "https://*.ngrok.io",
     "https://*.ngrok-free.app",

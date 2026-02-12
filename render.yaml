@@ -1,4 +1,16 @@
-web: cd backend && gunicorn library_seat_booking.wsgi:application
-release: cd backend && python manage.py migrate
-build: pip install -r backend/requirements.txt && cd backend && python manage.py collectstatic --noinput
+web: cd library_booking_api && gunicorn library_booking_api.wsgi:application
+release: cd library_booking_api && python manage.py migrate
+build: pip install -r requirements.txt && cd library_booking_api && python manage.py collectstatic --noinput
 python_version: "3.11"
+
+# Environment variables for production
+env:
+  DEBUG: False
+  SECRET_KEY:
+    description: "Django secret key"
+  DATABASE_URL:
+    description: "Database connection URL"
+  ALLOWED_HOSTS:
+    value: backendrepo-5.onrender.com,*.onrender.com
+  CORS_ALLOWED_ORIGINS:
+    value: https://front-repo-liard.vercel.app,https://backendrepo-5.onrender.com,https://*.onrender.com

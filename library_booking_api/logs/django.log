@@ -6699,3 +6699,15 @@ INFO 2026-02-12 09:00:07,304 django.server "GET /api/records/ HTTP/1.1" 200 52
 INFO 2026-02-12 09:00:07,356 django.server "GET /api/records/ HTTP/1.1" 200 52
 INFO 2026-02-12 09:00:07,433 django.server "GET /api/bookings/ HTTP/1.1" 200 8189
 INFO 2026-02-12 09:00:07,535 django.server "GET /api/bookings/ HTTP/1.1" 200 8189
+INFO 2026-02-12 14:00:02,823 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 14:00:14,200 django.server "GET / HTTP/1.1" 200 259
+WARNING 2026-02-12 14:00:14,352 django.request Not Found: /favicon.ico
+WARNING 2026-02-12 14:00:14,353 django.server "GET /favicon.ico HTTP/1.1" 404 4019
+INFO 2026-02-12 14:00:36,795 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2026-02-12 14:00:38,234 django.server "POST /api/accounts/login/ HTTP/1.1" 200 1051
+INFO 2026-02-12 14:00:41,963 django.server "OPTIONS /api/payments/?page_size=1000 HTTP/1.1" 200 0
+INFO 2026-02-12 14:00:42,023 django.server "GET /api/payments/?page_size=1000 HTTP/1.1" 200 2
+INFO 2026-02-12 14:05:21,873 django.utils.autoreload C:\Users\WELCOME\Desktop\ProjectFile\LibrarySeatBooking\BackendPanel\library_booking_api\library_booking_api\settings.py changed, reloading.
+INFO 2026-02-12 14:05:23,911 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 14:05:33,158 django.utils.autoreload C:\Users\WELCOME\Desktop\ProjectFile\LibrarySeatBooking\BackendPanel\library_booking_api\library_booking_api\settings.py changed, reloading.
+INFO 2026-02-12 14:05:34,688 django.utils.autoreload Watching for file changes with StatReloader
