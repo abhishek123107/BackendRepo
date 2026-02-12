@@ -155,10 +155,25 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:4200",
     "http://localhost:4201",
     "http://127.0.0.1:4201",
-    "http://localhost:4202",
-    "http://127.0.0.1:4202",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+    "http://localhost:59101",
     "http://127.0.0.1:59101",
+    # Vercel deployment
+    "https://front-repo-liard.vercel.app",
+    # Ngrok URLs (for testing)
+    "https://*.ngrok.io",
+    "https://*.ngrok-free.app",
+    # Add any other deployed frontend URLs here
 ]
+
+# For development, allow all origins (remove in production)
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
+else:
+    CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOW_CREDENTIALS = True
 

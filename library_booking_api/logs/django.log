@@ -6678,3 +6678,14 @@ INFO 2026-02-11 22:17:57,080 django.server "OPTIONS /api/accounts/login/ HTTP/1.
 INFO 2026-02-11 22:17:58,862 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
 INFO 2026-02-11 22:18:00,775 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
 INFO 2026-02-11 22:18:01,906 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2026-02-12 08:52:43,068 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 08:53:19,659 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2026-02-12 08:53:46,300 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2026-02-12 08:54:40,403 django.utils.autoreload C:\Users\WELCOME\Desktop\ProjectFile\LibrarySeatBooking\BackendPanel\library_booking_api\library_booking_api\settings.py changed, reloading.
+INFO 2026-02-12 08:54:43,444 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 08:55:07,991 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 08:55:54,081 django.utils.autoreload C:\Users\WELCOME\Desktop\ProjectFile\LibrarySeatBooking\BackendPanel\library_booking_api\library_booking_api\settings.py changed, reloading.
+INFO 2026-02-12 08:55:54,119 django.utils.autoreload C:\Users\WELCOME\Desktop\ProjectFile\LibrarySeatBooking\BackendPanel\library_booking_api\library_booking_api\settings.py changed, reloading.
+INFO 2026-02-12 08:55:55,749 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 08:55:55,799 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 08:56:39,724 django.utils.autoreload Watching for file changes with StatReloader
