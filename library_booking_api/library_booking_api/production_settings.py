@@ -28,17 +28,23 @@ CSRF_COOKIE_SAMESITE = 'Lax'
 
 # Database configuration (use Render's PostgreSQL)
 import dj_database_url
+from decouple import config
 
-# Parse DATABASE_URL with proper error handling
+# Parse DATABASE_URL with proper error handling and fallback
 try:
-    if config('DATABASE_URL', default=''):
+    database_url = config('DATABASE_URL', default='')
+    print(f"Attempting to connect with DATABASE_URL: {database_url[:20]}..." if database_url else "No DATABASE_URL found")
+    
+    if database_url and database_url.startswith('postgresql://'):
         DATABASES = {
             'default': dj_database_url.config(
-                default=config('DATABASE_URL'),
+                default=database_url,
                 conn_max_age=600,
                 conn_health_checks=True,
+                ssl_require=True,  # Required for Render PostgreSQL
             )
         }
+        print("✅ PostgreSQL database configured successfully")
     else:
         # Fallback to SQLite for local development
         DATABASES = {
@@ -47,9 +53,12 @@ try:
                 'NAME': BASE_DIR / 'db.sqlite3',
             }
         }
+        print("⚠️  Using SQLite fallback (no valid DATABASE_URL)")
+        
 except Exception as e:
-    print(f"Database configuration error: {e}")
-    # Fallback to SQLite
+    print(f"❌ Database configuration error: {e}")
+    print("🔄 Falling back to SQLite")
+    # Safe fallback to SQLite
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
