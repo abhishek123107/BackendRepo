@@ -81,9 +81,34 @@ WSGI_APPLICATION = 'library_seat_booking.wsgi.application'
 if config('DATABASE_URL', default=None):
     # Production PostgreSQL
     import dj_database_url
-    DATABASES = {
-        'default': dj_database_url.parse(config('DATABASE_URL'))
-    }
+    try:
+        database_url = config('DATABASE_URL', default='')
+        print(f"🔍 RAW DATABASE_URL: '{database_url}'")
+        
+        # Check for literal 'port' issue
+        if ':port/' in database_url:
+            print("❌ ERROR: DATABASE_URL contains literal 'port' instead of port number")
+            print("❌ Please fix DATABASE_URL in Render dashboard")
+            raise ValueError("DATABASE_URL contains literal 'port' - must be numeric port like 5432")
+        
+        DATABASES = {
+            'default': dj_database_url.config(
+                default=database_url,
+                conn_max_age=600,
+                conn_health_checks=True,
+                ssl_require=True,  # Required for Render PostgreSQL
+            )
+        }
+        print("✅ PostgreSQL database configured successfully")
+    except Exception as e:
+        print(f"❌ Database configuration error: {e}")
+        print("🔄 Falling back to SQLite")
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
 else:
     # Development SQLite
     DATABASES = {
