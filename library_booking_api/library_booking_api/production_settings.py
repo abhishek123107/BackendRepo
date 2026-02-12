@@ -30,12 +30,27 @@ CSRF_COOKIE_SAMESITE = 'Lax'
 import dj_database_url
 from decouple import config
 
+# Debug: Print the raw DATABASE_URL to see what's wrong
+raw_database_url = config('DATABASE_URL', default='')
+print(f"🔍 RAW DATABASE_URL: '{raw_database_url}'")
+print(f"🔍 DATABASE_URL length: {len(raw_database_url)}")
+if raw_database_url:
+    print(f"🔍 First 50 chars: {raw_database_url[:50]}")
+    print(f"🔍 Last 50 chars: {raw_database_url[-50:]}")
+else:
+    print("🔍 DATABASE_URL is empty")
+
 # Parse DATABASE_URL with proper error handling and fallback
 try:
     database_url = config('DATABASE_URL', default='')
-    print(f"Attempting to connect with DATABASE_URL: {database_url[:20]}..." if database_url else "No DATABASE_URL found")
     
     if database_url and database_url.startswith('postgresql://'):
+        # Additional validation
+        if ':port/' in database_url:
+            print("❌ ERROR: DATABASE_URL contains literal 'port' instead of port number")
+            print("❌ Please fix DATABASE_URL in Render dashboard")
+            raise ValueError("DATABASE_URL contains literal 'port' - must be numeric port like 5432")
+        
         DATABASES = {
             'default': dj_database_url.config(
                 default=database_url,
@@ -58,6 +73,8 @@ try:
 except Exception as e:
     print(f"❌ Database configuration error: {e}")
     print("🔄 Falling back to SQLite")
+    print("🔧 TO FIX: Update DATABASE_URL in Render dashboard with correct format")
+    print("🔧 Format: postgresql://username:password@host:5432/database_name")
     # Safe fallback to SQLite
     DATABASES = {
         'default': {
