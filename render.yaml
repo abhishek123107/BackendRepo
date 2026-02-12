@@ -1,7 +1,11 @@
 web: cd library_booking_api && gunicorn library_booking_api.wsgi:application
 release: cd library_booking_api && python manage.py migrate
-build: pip install -r requirements.txt && cd library_booking_api && python manage.py collectstatic --noinput
+build: pip install --upgrade pip && pip install -r requirements.txt && cd library_booking_api && python manage.py collectstatic --noinput
 python_version: "3.11"
+
+# Disable Poetry and use pip
+poetry:
+  install: false
 
 # Environment variables for production
 env:

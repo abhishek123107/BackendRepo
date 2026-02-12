@@ -205,3 +205,5 @@ INFO 2026-02-11 21:28:11,522 accounts.views New user registered: happy (happy123
 INFO 2026-02-11 21:28:43,647 accounts.views User happy logged in successfully
 INFO 2026-02-12 08:57:08,337 accounts.views User admin logged in successfully
 INFO 2026-02-12 14:00:38,140 accounts.views User welcome logged in successfully
+WARNING 2026-02-12 14:13:20,829 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
+INFO 2026-02-12 14:17:09,150 accounts.views User admin logged in successfully

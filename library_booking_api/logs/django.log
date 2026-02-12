@@ -6711,3 +6711,30 @@ INFO 2026-02-12 14:05:21,873 django.utils.autoreload C:\Users\WELCOME\Desktop\Pr
 INFO 2026-02-12 14:05:23,911 django.utils.autoreload Watching for file changes with StatReloader
 INFO 2026-02-12 14:05:33,158 django.utils.autoreload C:\Users\WELCOME\Desktop\ProjectFile\LibrarySeatBooking\BackendPanel\library_booking_api\library_booking_api\settings.py changed, reloading.
 INFO 2026-02-12 14:05:34,688 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 14:13:20,681 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+WARNING 2026-02-12 14:13:20,832 django.request Bad Request: /api/accounts/login/
+WARNING 2026-02-12 14:13:20,833 django.server "POST /api/accounts/login/ HTTP/1.1" 400 34
+INFO 2026-02-12 14:17:09,354 django.server "POST /api/accounts/login/ HTTP/1.1" 200 1007
+INFO 2026-02-12 14:17:22,909 django.server "OPTIONS /api/bookings/ HTTP/1.1" 200 0
+INFO 2026-02-12 14:17:22,914 django.server "OPTIONS /api/records/ HTTP/1.1" 200 0
+INFO 2026-02-12 14:17:22,958 django.server "GET /api/records/ HTTP/1.1" 200 52
+INFO 2026-02-12 14:17:23,093 django.server "GET /api/bookings/ HTTP/1.1" 200 8189
+INFO 2026-02-12 14:17:27,707 django.server "OPTIONS /api/accounts/users/ HTTP/1.1" 200 0
+INFO 2026-02-12 14:17:27,707 django.server "OPTIONS /api/accounts/users/ HTTP/1.1" 200 0
+INFO 2026-02-12 14:17:27,737 django.server "GET /api/accounts/users/ HTTP/1.1" 200 11230
+INFO 2026-02-12 14:17:27,750 django.server "GET /api/accounts/users/ HTTP/1.1" 200 11230
+INFO 2026-02-12 14:17:42,834 django.server "OPTIONS /api/seats HTTP/1.1" 200 0
+INFO 2026-02-12 14:17:42,866 django.server "GET /api/seats HTTP/1.1" 301 0
+INFO 2026-02-12 14:17:42,878 django.server "OPTIONS /api/seats/ HTTP/1.1" 200 0
+INFO 2026-02-12 14:17:42,994 django.server "GET /api/seats/ HTTP/1.1" 200 6396
+INFO 2026-02-12 14:17:53,098 django.server "OPTIONS /api/attendance/sessions/ HTTP/1.1" 200 0
+INFO 2026-02-12 14:17:53,099 django.server "OPTIONS /api/attendance/report/?start_date=2026-02-12&end_date=2026-02-12 HTTP/1.1" 200 0
+INFO 2026-02-12 14:17:53,131 django.server "GET /api/attendance/sessions/ HTTP/1.1" 200 52
+INFO 2026-02-12 14:17:53,157 django.server "GET /api/attendance/report/?start_date=2026-02-12&end_date=2026-02-12 HTTP/1.1" 200 95
+WARNING 2026-02-12 14:17:59,044 django.request Method Not Allowed: /api/attendance/sessions/
+WARNING 2026-02-12 14:17:59,045 django.server "POST /api/attendance/sessions/ HTTP/1.1" 405 41
+INFO 2026-02-12 14:18:04,855 django.server "OPTIONS /api/payments/ HTTP/1.1" 200 0
+INFO 2026-02-12 14:18:04,891 django.server "GET /api/payments/ HTTP/1.1" 200 1422
+INFO 2026-02-12 14:18:15,806 django.server "OPTIONS /api/notifications/ HTTP/1.1" 200 0
+WARNING 2026-02-12 14:18:15,826 django.request Not Found: /api/notifications/
+WARNING 2026-02-12 14:18:15,827 django.server "GET /api/notifications/ HTTP/1.1" 404 14556
