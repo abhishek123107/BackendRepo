@@ -194,3 +194,12 @@ WARNING 2026-02-10 14:15:36,277 accounts.views Login validation failed: {'detail
 WARNING 2026-02-10 14:15:59,844 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
 WARNING 2026-02-10 14:16:28,878 accounts.views Login validation failed: {'detail': [ErrorDetail(string='Invalid credentials', code='invalid')]}
 INFO 2026-02-10 14:26:36,490 accounts.views User admin logged in successfully
+INFO 2026-02-11 19:18:37,238 accounts.views User welcome logged in successfully
+INFO 2026-02-11 19:22:13,134 accounts.views User admin logged in successfully
+INFO 2026-02-11 19:41:01,892 accounts.views User welcome logged in successfully
+INFO 2026-02-11 20:44:38,046 accounts.views User admin logged in successfully
+INFO 2026-02-11 21:09:40,512 accounts.views User welcome logged in successfully
+INFO 2026-02-11 21:17:24,550 accounts.views User admin logged in successfully
+INFO 2026-02-11 21:24:19,167 accounts.views User welcome logged in successfully
+INFO 2026-02-11 21:28:11,522 accounts.views New user registered: happy (happy123@gmail.com)
+INFO 2026-02-11 21:28:43,647 accounts.views User happy logged in successfully
