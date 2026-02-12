@@ -6689,3 +6689,13 @@ INFO 2026-02-12 08:55:54,119 django.utils.autoreload C:\Users\WELCOME\Desktop\Pr
 INFO 2026-02-12 08:55:55,749 django.utils.autoreload Watching for file changes with StatReloader
 INFO 2026-02-12 08:55:55,799 django.utils.autoreload Watching for file changes with StatReloader
 INFO 2026-02-12 08:56:39,724 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-02-12 08:57:04,994 django.server "OPTIONS /api/accounts/login/ HTTP/1.1" 200 0
+INFO 2026-02-12 08:57:08,683 django.server "POST /api/accounts/login/ HTTP/1.1" 200 1007
+INFO 2026-02-12 08:57:10,802 django.server "OPTIONS /api/bookings/ HTTP/1.1" 200 0
+INFO 2026-02-12 08:57:10,843 django.server "OPTIONS /api/records/ HTTP/1.1" 200 0
+INFO 2026-02-12 08:57:10,899 django.server "GET /api/records/ HTTP/1.1" 200 52
+INFO 2026-02-12 08:57:11,027 django.server "GET /api/bookings/ HTTP/1.1" 200 8189
+INFO 2026-02-12 09:00:07,304 django.server "GET /api/records/ HTTP/1.1" 200 52
+INFO 2026-02-12 09:00:07,356 django.server "GET /api/records/ HTTP/1.1" 200 52
+INFO 2026-02-12 09:00:07,433 django.server "GET /api/bookings/ HTTP/1.1" 200 8189
+INFO 2026-02-12 09:00:07,535 django.server "GET /api/bookings/ HTTP/1.1" 200 8189
