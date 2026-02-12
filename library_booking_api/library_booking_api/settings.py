@@ -34,12 +34,12 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-iv*g$pfm_@j5-gutyl@m8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = [
-    'backendrepo-5.onrender.com',
-    '*.onrender.com',
-    '127.0.0.1',
-    'localhost'
-]
+# Production ALLOWED_HOSTS
+ALLOWED_HOSTS = config(
+    'ALLOWED_HOSTS',
+    default='backendrepo-5.onrender.com,*.onrender.com,127.0.0.1,localhost',
+    cast=lambda v: [s.strip() for s in v.split(',')]
+)
 
 
 # Application definition
@@ -155,26 +155,12 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
-    "http://127.0.0.1:4200",
-    "http://localhost:4201",
-    "http://127.0.0.1:4201",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:8080",
-    "http://127.0.0.1:8080",
-    "http://localhost:59101",
-    "http://127.0.0.1:59101",
-    # Production URLs
-    "https://front-repo-liard.vercel.app",
-    "https://backendrepo-5.onrender.com",
-    "https://*.onrender.com",
-    # Ngrok URLs (for testing)
-    "https://*.ngrok.io",
-    "https://*.ngrok-free.app",
-    # Add any other deployed frontend URLs here
-]
+# CORS settings - use environment variables for production
+CORS_ALLOWED_ORIGINS = config(
+    'CORS_ALLOWED_ORIGINS',
+    default='https://front-repo-liard.vercel.app,https://backendrepo-5.onrender.com,https://*.onrender.com,http://localhost:4200,http://127.0.0.1:4200,http://localhost:3000,http://127.0.0.1:3000',
+    cast=lambda v: [s.strip() for s in v.split(',')]
+)
 
 # For development, allow all origins (remove in production)
 if DEBUG:

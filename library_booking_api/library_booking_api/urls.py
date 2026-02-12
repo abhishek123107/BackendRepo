@@ -27,16 +27,22 @@ router.register(r'payments', PaymentViewSet, basename='payment-records')
 def home(request):
     """API Home endpoint"""
     return JsonResponse({
-        'status': 'ok',
-        'message': 'Library Seat Booking API is Running',
+        'message': 'Backend Server is Running Successfully',
+        'status': 'active',
+        'service': 'Library Seat Booking API',
+        'version': '1.0.0',
         'endpoints': {
+            'admin': '/admin/',
+            'api': '/api/',
             'auth_token': '/api/auth/token/',
             'accounts': '/api/accounts/',
             'seats': '/api/seats/',
             'attendance': '/api/attendance/',
             'payments': '/api/payments/',
+            'notifications': '/api/notifications/',
             'admin_panel': '/admin/',
-        }
+        },
+        'documentation': '/api/docs/'
     })
 
 urlpatterns = [
