@@ -6738,3 +6738,8 @@ INFO 2026-02-12 14:18:04,891 django.server "GET /api/payments/ HTTP/1.1" 200 142
 INFO 2026-02-12 14:18:15,806 django.server "OPTIONS /api/notifications/ HTTP/1.1" 200 0
 WARNING 2026-02-12 14:18:15,826 django.request Not Found: /api/notifications/
 WARNING 2026-02-12 14:18:15,827 django.server "GET /api/notifications/ HTTP/1.1" 404 14556
+INFO 2026-04-05 19:01:48,402 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:03:09,847 django.utils.autoreload Watching for file changes with StatReloader
+INFO 2026-04-05 19:05:24,332 django.server "GET / HTTP/1.1" 200 432
+WARNING 2026-04-05 19:05:24,466 django.request Not Found: /favicon.ico
+WARNING 2026-04-05 19:05:24,467 django.server "GET /favicon.ico HTTP/1.1" 404 4019

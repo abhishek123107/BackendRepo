@@ -51,6 +51,12 @@ class SeatBooking(models.Model):
         ('hourly', 'Hourly'),
         ('daily', 'Daily'),
         ('monthly', 'Monthly'),
+        ('morning_shift', 'Morning Shift (6 AM - 11 AM)'),
+        ('afternoon_shift', 'Afternoon Shift (11 AM - 4 PM)'),
+        ('evening_shift', 'Evening Shift (4 PM - 9 PM)'),
+        ('full_day', 'Full Day (12 Hours)'),
+        ('night_shift', 'Night Shift (7 PM - 6 AM)'),
+        ('24_7_access', '24/7 Access (Unlimited)'),
     ]
 
     user = models.ForeignKey(
@@ -128,7 +134,7 @@ class SeatBooking(models.Model):
         """Calculate booking amount based on plan and duration"""
         duration_hours = (self.end_time - self.start_time).total_seconds() / 3600
 
-        # Pricing logic (you can customize this)
+        # Pricing logic for time-based plans
         if self.plan == 'hourly':
             rate_per_hour = 10.00  # ₹10 per hour
             return duration_hours * rate_per_hour
@@ -138,5 +144,18 @@ class SeatBooking(models.Model):
         elif self.plan == 'monthly':
             rate_per_month = 500.00  # ₹500 per month
             return (duration_hours / (24 * 30)) * rate_per_month
+        # Fixed pricing for shift-based plans
+        elif self.plan == 'morning_shift':
+            return 300.00  # Fixed rate for morning shift
+        elif self.plan == 'afternoon_shift':
+            return 350.00  # Fixed rate for afternoon shift
+        elif self.plan == 'evening_shift':
+            return 300.00  # Fixed rate for evening shift
+        elif self.plan == 'full_day':
+            return 500.00  # Fixed rate for full day
+        elif self.plan == 'night_shift':
+            return 350.00  # Fixed rate for night shift
+        elif self.plan == '24_7_access':
+            return 800.00  # Fixed rate for 24/7 access
         else:
             return 0.00

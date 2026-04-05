@@ -32,6 +32,10 @@ class SeatBookingSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'total_amount', 'created_at', 'updated_at']
 
+    def get_allowed_plan_choices(self):
+        """Helper method to get all allowed plan choices"""
+        return dict(SeatBooking.PLAN_CHOICES)
+    
     def create(self, validated_data):
         # Set user from request context if not provided
         if 'user' not in validated_data:
